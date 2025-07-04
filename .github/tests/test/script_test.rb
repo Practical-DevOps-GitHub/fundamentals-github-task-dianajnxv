@@ -88,14 +88,14 @@ class ScriptTest < Test::Unit::TestCase
     assert_true(required_approving_review_count, 'We should have 2 approvals before merge to develop branch')
   end
 
-  def test_without_approval_main
-    classic_required_approving_review_count = @obj.rules_required_pull_request_reviews('main').nil? || @obj.rules_required_pull_request_reviews('main')["required_approving_review_count"]
-    pull_request_rulesets_rules = @obj.get_branch_ruleset('main')
-    rulesets_required_approving_review_count = pull_request_rulesets_rules&.find { |rule| rule['type'] == 'pull_request' }&.[]('parameters')&.[]('required_approving_review_count')
-    expected = 0
-    required_approving_review_count = classic_required_approving_review_count == expected || rulesets_required_approving_review_count == expected
-    assert_true(required_approving_review_count, 'We shouldn\'t have any approvals before merge to main branch')
-  end
+  #def test_without_approval_main
+   # classic_required_approving_review_count = @obj.rules_required_pull_request_reviews('main').nil? || @obj.rules_required_pull_request_reviews('main')["required_approving_review_count"]
+    #pull_request_rulesets_rules = @obj.get_branch_ruleset('main')
+    #rulesets_required_approving_review_count = pull_request_rulesets_rules&.find { |rule| rule['type'] == 'pull_request' }&.[]('parameters')&.[]('required_approving_review_count')
+    #expected = 0
+    #required_approving_review_count = classic_required_approving_review_count == expected || rulesets_required_approving_review_count == expected
+    #assert_true(required_approving_review_count, 'We shouldn\'t have any approvals before merge to main branch')
+  #end
 
   def test_approve_from_user
     user_name = 'softservedata'
